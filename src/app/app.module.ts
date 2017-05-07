@@ -5,6 +5,9 @@ import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
 import { HeaderModule } from './header/header.module';
+import { LoginModule } from "app/login/login.module";
+import { AppRoutingModule } from './app.routing.module';
+import { HomeModule } from "app/home/home.module";
 
 @NgModule({
   declarations: [
@@ -14,7 +17,10 @@ import { HeaderModule } from './header/header.module';
     BrowserModule,
     FormsModule,
     HttpModule,
-    HeaderModule
+    HeaderModule,
+    LoginModule,
+    HomeModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
