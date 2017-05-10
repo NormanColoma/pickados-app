@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from "app/app.component";
 import { LoginComponent } from "app/login/login.component";
 import { HomeComponent } from "app/home/home.component";
+import { PostComponent } from "app/post/post.component";
 
 const appRoutes : Routes = [
   {
@@ -12,6 +13,10 @@ const appRoutes : Routes = [
   {
     path: 'home',
     component: HomeComponent
+  },
+  {
+    path: 'posts',
+    component: PostComponent
   },
   {
     path: '**',
@@ -26,7 +31,7 @@ const appRoutes : Routes = [
 @NgModule({
     imports: [
         RouterModule.forRoot(appRoutes)
-    ], 
+    ],
     exports: [
         RouterModule
     ]
