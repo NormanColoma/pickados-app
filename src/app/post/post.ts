@@ -6,4 +6,5 @@ export class Post {
   pick_result: string;
   stake: number;
   odd: number;
+  sport: string;
 }
