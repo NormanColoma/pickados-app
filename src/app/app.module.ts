@@ -9,6 +9,7 @@ import { LoginModule } from "app/login/login.module";
 import { AppRoutingModule } from './app.routing.module';
 import { HomeModule } from "app/home/home.module";
 import { PostModule } from "app/post/post.module";
+import { UserPanelModule } from "app/user-panel/user-panel.module";
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { PostModule } from "app/post/post.module";
     LoginModule,
     HomeModule,
     PostModule,
+    UserPanelModule,
     AppRoutingModule
   ],
   providers: [],
