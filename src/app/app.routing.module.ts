@@ -4,6 +4,8 @@ import { AppComponent } from "app/app.component";
 import { LoginComponent } from "app/login/login.component";
 import { HomeComponent } from "app/home/home.component";
 import { PostComponent } from "app/post/post.component";
+import { StatsComponent } from "app/stats/stats.component";
+import { TipsterComponent } from "app/tipsters/tipster.component";
 
 const appRoutes : Routes = [
   {
@@ -17,6 +19,14 @@ const appRoutes : Routes = [
   {
     path: 'posts',
     component: PostComponent
+  },
+  {
+    path: 'tipsters',
+    component: TipsterComponent
+  },
+  {
+    path: 'stats',
+    component: StatsComponent
   },
   {
     path: '**',

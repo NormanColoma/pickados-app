@@ -2,13 +2,13 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { PostComponent } from "app/post/post.component";
 import { PostDetailComponent} from "app/post/post-detail.component";
-import { UserPanelComponent} from "app/user-panel/user-panel.component";
+import { UserPanelModule} from "app/user-panel/user-panel.module";
 @NgModule({
     declarations : [
-        PostComponent, PostDetailComponent, UserPanelComponent
+        PostComponent, PostDetailComponent
     ],
     imports: [
-        CommonModule
+        CommonModule, UserPanelModule
     ],
     exports: [
         PostComponent
