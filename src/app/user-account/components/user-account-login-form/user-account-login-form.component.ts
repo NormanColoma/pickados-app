@@ -1,41 +1,47 @@
-import { Component } from '@angular/core';
+import { Component, Output, EventEmitter } from '@angular/core';
 
 @Component({
     selector: 'user-account-login-form',
     template: `
-         <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="#">Pickados</a></li>
-            <li class="breadcrumb-item active">Iniciar Sesión</li>
-        </ol>
-        <div id="loginContainer" class="d-md-flex flex-column align-items-center">
-            <div class="card col-md-4">
-                <h3 class="card-header display-4">Iniciar Sesión</h3>
-                <div class="card-block">
-                    <form>
-                        <div class="form-group">
-                            <label for="userName">Usuario</label>
-                            <input type="text" class="form-control" id="userName" placeholder="Introduce tu nombre de usuario">
-                        </div>
-                        <div class="form-group">
-                            <label for="pass">Password</label>
-                            <input type="password" class="form-control" id="pass" placeholder="Introduce aquí tu contraseña">
-                        </div>
-                        <button type="submit" class="btn btn-primary">Inciar Sesión</button>
-                    </form>
-                    <div class="d-md-flex flex-column align-items-end">
-                        <p class="card-text">
-                            <small>¿No tienes una cuenta?
-                                <a routerLink="/register" routerLinkActive="active" class="text-primary">Regístrate</a>
-                            </small>
-                        </p>
-                    </div>
-                </div>
+        <form (ngSubmit)="handleLogin(form.value)" #form="ngForm" novalidate>
+            <div class="form-group">
+                <label for="username">Usuario</label>
+                <input 
+                    type="text" 
+                    class="form-control" 
+                    name="username" 
+                    placeholder="Introduce tu nombre de usuario"
+                    #username="ngModel"
+                    ngModel
+                    required
+                >
             </div>
-        </div>
+            <div class="form-group">
+                <label for="pass">Password</label>
+                <input 
+                    type="password" 
+                    class="form-control" 
+                    name="pass" 
+                    placeholder="Introduce aquí tu contraseña"
+                    #pass="ngModel"
+                    ngModel
+                    required
+                >
+            </div>
+            <button type="submit" class="btn btn-primary" [disabled]="form.invalid">Inciar Sesión</button>
+        </form>
     `,
     styleUrls: [
         './user-account-login-form.component.css'
     ]
 })
 
-export class UserAccountLoginForm {}
+export class UserAccountLoginForm {
+
+    @Output()
+    login: EventEmitter <any> = new EventEmitter();
+
+    handleLogin(account){
+        this.login.emit(account);
+    }
+}
