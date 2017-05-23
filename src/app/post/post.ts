@@ -7,4 +7,5 @@ export class Post {
   stake: number;
   odd: number;
   sport: string;
+  state: string;
 }

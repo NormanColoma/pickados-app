@@ -12,8 +12,10 @@ import { HomeModule } from "app/home/home.module";
 import { PostModule } from "app/post/post.module";
 import { UserPanelModule } from "app/user-panel/user-panel.module";
 import { RatioChartModule} from "app/stats/ratio-chart.module";
+import { PickSummaryModule } from "app/stats/pick-summary.module";
 import { StatsModule} from "app/stats/stats.module";
 import { TipsterModule } from "app/tipsters/tipster.module";
+import { UserBannerModule } from "app/stats/user-banner.module";
 
 @NgModule({
   declarations: [
@@ -31,7 +33,9 @@ import { TipsterModule } from "app/tipsters/tipster.module";
     StatsModule,
     UserPanelModule,
     RatioChartModule,
+    PickSummaryModule,
     TipsterModule,
+    UserBannerModule,
     AppRoutingModule
   ],
   providers: [],
