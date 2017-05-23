@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Post } from 'app/post/post';
-import { PostService } from 'app/post/post.service';
+import { Post } from 'app/posts-dashboard/services/post';
+import { PostService } from 'app/posts-dashboard/services/post.service';
 
 @Component({
     providers: [PostService],

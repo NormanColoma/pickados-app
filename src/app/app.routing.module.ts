@@ -3,8 +3,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from "app/app.component";
 import { LoginComponent } from "app/login/login.component";
 import { HomeComponent } from "app/home/home.component";
-import { PostComponent } from "app/post/post.component";
-import { StatsComponent } from "app/stats/stats.component";
+import { PostsDashboardComponent } from "app/posts-dashboard/containers/posts-dashboard.component";
+import { UserStatsComponent } from "app/user-stats/containers/user-stats.component";
 import { TipsterComponent } from "app/tipsters/tipster.component";
 
 const appRoutes : Routes = [
@@ -18,7 +18,7 @@ const appRoutes : Routes = [
   },
   {
     path: 'posts',
-    component: PostComponent
+    component: PostsDashboardComponent
   },
   {
     path: 'tipsters',
@@ -26,7 +26,7 @@ const appRoutes : Routes = [
   },
   {
     path: 'stats',
-    component: StatsComponent
+    component: UserStatsComponent
   },
   {
     path: '**',

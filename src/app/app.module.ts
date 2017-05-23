@@ -9,13 +9,9 @@ import { HeaderModule } from './header/header.module';
 import { LoginModule } from "app/login/login.module";
 import { AppRoutingModule } from './app.routing.module';
 import { HomeModule } from "app/home/home.module";
-import { PostModule } from "app/post/post.module";
-import { UserPanelModule } from "app/user-panel/user-panel.module";
-import { RatioChartModule} from "app/stats/ratio-chart.module";
-import { PickSummaryModule } from "app/stats/pick-summary.module";
-import { StatsModule} from "app/stats/stats.module";
+import { PostsDashboardModule } from "app/posts-dashboard/posts-dashboard.module";
 import { TipsterModule } from "app/tipsters/tipster.module";
-import { UserBannerModule } from "app/stats/user-banner.module";
+import { UserStatsModule} from "app/user-stats/user-stats.module";
 
 @NgModule({
   declarations: [
@@ -29,13 +25,9 @@ import { UserBannerModule } from "app/stats/user-banner.module";
     HeaderModule,
     LoginModule,
     HomeModule,
-    PostModule,
-    StatsModule,
-    UserPanelModule,
-    RatioChartModule,
-    PickSummaryModule,
+    PostsDashboardModule,
+    UserStatsModule,
     TipsterModule,
-    UserBannerModule,
     AppRoutingModule
   ],
   providers: [],
