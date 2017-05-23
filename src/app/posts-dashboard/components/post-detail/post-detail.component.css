@@ -1,0 +1,21 @@
+.sport-column {
+  float: left;
+  width: 20%;
+  height: 100%;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+.content-column {
+  float: right;
+}
+
+.event-content {
+  padding: 10px 20px;
+}
+
+.event-content h1 {
+  font-size: 1.4em;
+}

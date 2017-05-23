@@ -1,0 +1,10 @@
+.post-block {
+  margin-bottom: 1.5em;
+  -webkit-box-shadow: 2px 2px 5px 0px rgba(97,97,97,0.75);
+  -moz-box-shadow: 2px 2px 5px 0px rgba(97,97,97,0.75);
+  box-shadow: 2px 2px 5px 0px rgba(97,97,97,0.75);
+}
+
+.test {
+  margin-top: 200px;
+}

@@ -1,0 +1,30 @@
+<div style="margin-top: 40px">
+<h2>Histórico picks</h2>
+<table class="table table-sm table-hover">
+  <thead>
+    <tr>
+      <th>Pronóstico</th>
+      <th>Evento</th>
+      <th>Cuota</th>
+      <th>Stake</th>
+      <th>Balance</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let post of posts"
+    [class.table-success]="post.state==='won'"
+    [class.table-danger]="post.state==='lost'"
+    [class.table-info]="post.state==='void'">
+      <th scope="row">{{post.pick_result}}</th>
+      <td>{{post.pick_event}}</td>
+      <td>{{post.odd}}</td>
+      <td>{{post.stake}}</td>
+      <td [ngSwitch]="post.state">
+        <span *ngSwitchCase="'won'">+{{post.stake * post.odd - post.stake}} uds.</span>
+        <span *ngSwitchCase="'lost'">-{{post.stake}} uds.</span>
+        <span *ngSwitchCase="'void'">0</span>
+      </td>
+    </tr>
+  </tbody>
+</table>
+</div>

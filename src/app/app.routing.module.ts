@@ -3,6 +3,9 @@ import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from "app/app.component";
 import { LoginComponent } from "app/login/login.component";
 import { HomeComponent } from "app/home/home.component";
+import { PostsDashboardComponent } from "app/posts-dashboard/containers/posts-dashboard.component";
+import { UserStatsComponent } from "app/user-stats/containers/user-stats.component";
+import { TipsterComponent } from "app/tipsters/tipster.component";
 
 const appRoutes : Routes = [
   {
@@ -12,6 +15,18 @@ const appRoutes : Routes = [
   {
     path: 'home',
     component: HomeComponent
+  },
+  {
+    path: 'posts',
+    component: PostsDashboardComponent
+  },
+  {
+    path: 'tipsters',
+    component: TipsterComponent
+  },
+  {
+    path: 'stats',
+    component: UserStatsComponent
   },
   {
     path: '**',
@@ -26,7 +41,7 @@ const appRoutes : Routes = [
 @NgModule({
     imports: [
         RouterModule.forRoot(appRoutes)
-    ], 
+    ],
     exports: [
         RouterModule
     ]
