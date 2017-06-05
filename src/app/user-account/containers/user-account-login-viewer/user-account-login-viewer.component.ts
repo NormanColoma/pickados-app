@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { UserAccountCredentials } from "app/user-account/models/user-account-credentials.interface";
+import { UserAccountService } from "app/user-account/user-account.service";
+import { UserAccount } from "app/user-account/models/user-account.interface";
 
 @Component({
     selector: 'user-account-login-viewer',
@@ -31,8 +34,15 @@ import { Component } from '@angular/core';
 })
 
 export class UserAccountLoginViewer{
+    user: UserAccount;
 
-    onLoginAccount(event){
-        console.log(event);
+    constructor(private userAccountService: UserAccountService){}
+
+    onLoginAccount(event : UserAccountCredentials){
+        this.userAccountService
+        .login(event)
+        .subscribe((data: UserAccount) => {
+            this.user = data;
+        })
     }
 }

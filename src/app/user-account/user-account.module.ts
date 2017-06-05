@@ -5,6 +5,7 @@ import { Routes, RouterModule } from "@angular/router";
 import { UserAccountLoginViewer } from "app/user-account/containers/user-account-login-viewer/user-account-login-viewer.component";
 import { UserAccountLoginForm } from "app/user-account/components/user-account-login-form/user-account-login-form.component";
 import { UserAccountRegisterViewer } from "app/user-account/containers/user-account-register-viewer/user-account-register-viewer.component";
+import { UserAccountService } from "app/user-account/user-account.service";
 
 const routes : Routes = [
     {
@@ -35,6 +36,9 @@ const routes : Routes = [
     ],
     exports:[
 
+    ],
+    providers: [
+        UserAccountService
     ]
 })
 
