@@ -5,7 +5,7 @@ import { LoginComponent } from "app/login/login.component";
 import { HomeComponent } from "app/home/home.component";
 import { PostsDashboardComponent } from "app/posts-dashboard/containers/posts-dashboard.component";
 import { UserStatsComponent } from "app/user-stats/containers/user-stats.component";
-import { TipsterComponent } from "app/tipsters/tipster.component";
+import { TipsterComponent } from "app/tipsters/containers/tipster.component";
 
 const appRoutes : Routes = [
   {
