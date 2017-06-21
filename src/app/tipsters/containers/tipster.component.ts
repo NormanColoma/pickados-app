@@ -19,10 +19,10 @@ export class TipsterComponent implements OnInit{
   constructor(private tipstersService: TipstersService) { }
 
   getTipsters(): void {
-    this.tipstersService
+   /**this.tipstersService
     .getAll()
     .subscribe((tipsters: Tipster[]) => {
     this.tipsters = tipsters;
-    });
+    });**/
   }
 }
