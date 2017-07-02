@@ -1,16 +1,26 @@
-import { Component} from '@angular/core';
+import { Component, Input, OnChanges, OnInit } from '@angular/core';
+import { Stats } from 'app/user-stats/models/stats';
 
 @Component({
     selector: 'ratio-chart',
     templateUrl: './ratio-chart.component.html'
 })
 
-export class RatioChartComponent{
-  // lineChart
-    public lineChartData:Array<any> = [
-      {data: [10, 20, -10, 35, 27, 10, 25], label: '% Yield'}
+export class RatioChartComponent implements OnInit{
+    @Input() stats: Stats[];
+
+    public lineChartData:Array<any>;
+
+    ngOnInit(): void {
+      console.log("YIELDLDDDDD " + this.stats[0].Yield);
+      this.lineChartData = [
+      {data: [this.stats[3].Yield, this.stats[2].Yield, this.stats[1].Yield, this.stats[0].Yield], label: '% Yield'}
     ];
-    public lineChartLabels:Array<any> = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio'];
+    }
+
+  // lineChart
+ 
+    public lineChartLabels:Array<any> = ['Marzo', 'Abril', 'Mayo', 'Junio'];
     public lineChartOptions:any = {
       responsive: true
     };
