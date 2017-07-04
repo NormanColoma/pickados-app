@@ -22,7 +22,7 @@ import { UserAccount } from "app/user-account/models/user-account.interface";
                     <div class="d-md-flex flex-column align-items-end">
                         <p class="card-text">
                             <small>¿No tienes una cuenta?
-                                <a routerLink="/register" routerLinkActive="active" class="text-primary">Regístrate</a>
+                                <a routerLink="/account/register" routerLinkActive="active" class="text-primary">Regístrate</a>
                             </small>
                         </p>
                     </div>
@@ -43,6 +43,7 @@ export class UserAccountLoginViewer{
         .login(event)
         .subscribe((data: UserAccount) => {
             this.user = data;
+            debugger;
         })
     }
 }
