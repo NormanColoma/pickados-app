@@ -6,6 +6,7 @@ import { UserAccountLoginViewer } from "app/user-account/containers/user-account
 import { UserAccountLoginForm } from "app/user-account/components/user-account-login-form/user-account-login-form.component";
 import { UserAccountRegisterViewer } from "app/user-account/containers/user-account-register-viewer/user-account-register-viewer.component";
 import { UserAccountService } from "app/user-account/user-account.service";
+import { AuthGuard } from "app/user-account/auth-guard.service";
 
 const routes : Routes = [
     {
@@ -17,7 +18,8 @@ const routes : Routes = [
             },
              {
                 path: 'register',
-                component: UserAccountRegisterViewer  
+                component: UserAccountRegisterViewer,
+                canActivate: [AuthGuard],  
             }
         ]
   },
@@ -38,7 +40,8 @@ const routes : Routes = [
 
     ],
     providers: [
-        UserAccountService
+        UserAccountService,
+        AuthGuard
     ]
 })
 

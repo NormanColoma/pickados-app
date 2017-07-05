@@ -34,16 +34,17 @@ import { UserAccount } from "app/user-account/models/user-account.interface";
 })
 
 export class UserAccountLoginViewer{
-    user: UserAccount;
 
     constructor(private userAccountService: UserAccountService){}
 
     onLoginAccount(event : UserAccountCredentials){
         this.userAccountService
         .login(event)
-        .subscribe((data: UserAccount) => {
-            this.user = data;
-            debugger;
-        })
+        .subscribe((data: boolean) => {
+            if (data) {
+                debugger;
+                this.userAccountService.redirectAfterLogin();
+            }
+        });
     }
 }
