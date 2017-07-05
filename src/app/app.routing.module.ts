@@ -25,7 +25,7 @@ const appRoutes : Routes = [
     component: TipsterComponent
   },
   {
-    path: 'stats',
+    path: 'stats/:user',
     component: UserStatsComponent
   },
   {

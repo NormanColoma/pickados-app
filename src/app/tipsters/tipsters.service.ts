@@ -13,6 +13,14 @@ const TIPSTER_URL : string = 'http://localhost:16209/api/Tipster'
 export class TipstersService {
     constructor(private http: Http){}
 
+    getByAlias(alias: string): Observable<Tipster>{
+        let headers = new Headers({ 'Content-Type': 'application/json' });
+        let options = new RequestOptions({ headers: headers });
+        return this.http
+            .get(`${TIPSTER_URL}/FindByUser?alias=` + alias, options)
+            .map((response : Response) => response.json());
+    }
+
     getAll(): Observable<Tipster[]>{
         let headers = new Headers({ 'Content-Type': 'application/json' });
         let options = new RequestOptions({ headers: headers });

@@ -1,8 +1,12 @@
 <div class="container" >
-  <user-banner></user-banner>
+  <div *ngIf="stats && tipster">
+    <user-banner [stats]="stats" [tipster]="tipster"></user-banner>
+  </div>
 </div>
 <div class="container">
-  <ratio-chart></ratio-chart>
+  <div *ngIf="stats">
+    <ratio-chart [stats]="stats"></ratio-chart>
+  </div>
 </div>
 <div class="container">
   <pick-summary></pick-summary>

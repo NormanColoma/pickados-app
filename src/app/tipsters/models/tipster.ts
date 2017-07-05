@@ -1,4 +1,5 @@
 export class Tipster {
-  username: string;
-  sport: string;
+  Alias: string;
+  Email: string;
+  Premium: boolean;
 }
