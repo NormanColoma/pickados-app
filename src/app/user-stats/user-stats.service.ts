@@ -13,9 +13,9 @@ const USER_STATS_URL : string = 'http://localhost:16209/api/Stats'
 export class UserStatsService {
     constructor(private http: Http){}
 
-    getByTipsterAndMonth(month: number): Observable<Stats[]>{
+    getByTipsterAndMonth(month: number, user: string): Observable<Stats[]>{
         let params: URLSearchParams = new URLSearchParams();
-        params.set('p_tipster_name', 'laura');
+        params.set('p_tipster_name', user);
         params.set('p_stats_month', month.toString());
         params.set('p_stats_year', '2017')
 

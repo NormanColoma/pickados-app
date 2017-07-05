@@ -12,10 +12,9 @@ export class RatioChartComponent implements OnInit{
     public lineChartData:Array<any>;
 
     ngOnInit(): void {
-      console.log("YIELDLDDDDD " + this.stats[0].Yield);
-      this.lineChartData = [
-      {data: [this.stats[3].Yield, this.stats[2].Yield, this.stats[1].Yield, this.stats[0].Yield], label: '% Yield'}
-    ];
+        this.lineChartData = [
+        {data: [this.stats[3].Yield, this.stats[2].Yield, this.stats[1].Yield, this.stats[0].Yield], label: '% Yield'}
+      ];
     }
 
   // lineChart
@@ -26,9 +25,9 @@ export class RatioChartComponent implements OnInit{
     };
     public lineChartColors:Array<any> = [
       { // grey
-        backgroundColor: 'rgba(148,159,177,0.2)',
-        borderColor: 'rgba(148,159,177,1)',
-        pointBackgroundColor: 'rgba(148,159,177,1)',
+        backgroundColor: 'rgba(72,213,168,0.4)',
+        borderColor: 'rgba(33,149,113,1)',
+        pointBackgroundColor: 'rgba(33,128,149,1)',
         pointBorderColor: '#fff',
         pointHoverBackgroundColor: '#fff',
         pointHoverBorderColor: 'rgba(148,159,177,0.8)'
@@ -51,11 +50,13 @@ export class RatioChartComponent implements OnInit{
       }
     ];
 
+    public doughnutChartColors: any[] = [{ backgroundColor: ["#57D449", "#D45E49", "#4979D4"] }];
+
     public lineChartLegend:boolean = true;
     public lineChartType:string = 'line';
 
     public doughnutChartLabels:string[] = ['Aciertos', 'Fallos', 'Nulos'];
-    public doughnutChartData:number[] = [350, 450, 100];
+    public doughnutChartData:number[] = [55, 40, 8];
     public doughnutChartType:string = 'doughnut';
 
     public randomize():void {

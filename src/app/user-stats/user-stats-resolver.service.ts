@@ -15,6 +15,6 @@ export class UserStatsResolver implements Resolve<Stats[]> {
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<Stats[]> {
     //let id = route.paramMap.get('alias');
 
-    return this.userStatsService.getByTipsterAndMonth(6);
+    return this.userStatsService.getByTipsterAndMonth(6, '');
   }
 }
