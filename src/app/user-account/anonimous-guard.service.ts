@@ -18,8 +18,7 @@ export class AnonimousGuard implements CanActivate {
   }
 
   checkLogin(url: string): boolean {
-    if (this.authService.isLogged()) { 
-        debugger;
+    if (this.authService.isLoggedIn()) { 
         this.router.navigate([url]);
         return false;
     }

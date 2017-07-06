@@ -32,7 +32,6 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit(): void {
       this.subscription = this.userAccountService.userLoggedIn$.subscribe(result => {
-          console.log(result);
           this.isLoggedIn = result;
       });
   }

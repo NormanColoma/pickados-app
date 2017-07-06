@@ -20,7 +20,7 @@ const API_URL : string = 'http://localhost:16209/api/Tipster'
 export class UserAccountService {
     
     private redirectUrl: string = '/home';
-    
+
     private loggedInSource = new BehaviorSubject<boolean>(this.isLoggedIn());
     public userLoggedIn$ = this.loggedInSource.asObservable();
 
@@ -32,8 +32,7 @@ export class UserAccountService {
         return this.http
             .post(`${API_URL}/Login`, account, options)
             .map((response : Response) => {
-                localStorage.setItem('loggedIn', 'true');
-                localStorage.setItem('loggedInUser', JSON.stringify(response.json()));
+                this.setLoggedUser(response.json());
                 this.loggedInSource.next(true);
                 return Observable.of(true);
             })
@@ -51,6 +50,11 @@ export class UserAccountService {
 
     setRedirectUrl(url: string) {
         this.redirectUrl = url;
+    }
+
+    setLoggedUser(user : UserAccount) {
+        localStorage.setItem('loggedIn', 'true');
+        localStorage.setItem('loggedInUser', JSON.stringify(user));
     }
 
     redirectAfterLogin(){
