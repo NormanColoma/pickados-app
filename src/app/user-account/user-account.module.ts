@@ -7,6 +7,7 @@ import { UserAccountLoginForm } from "app/user-account/components/user-account-l
 import { UserAccountRegisterViewer } from "app/user-account/containers/user-account-register-viewer/user-account-register-viewer.component";
 import { UserAccountService } from "app/user-account/user-account.service";
 import { AuthGuard } from "app/user-account/auth-guard.service";
+import { AnonimousGuard } from "app/user-account/anonimous-guard.service";
 
 const routes : Routes = [
     {
@@ -14,12 +15,13 @@ const routes : Routes = [
         children: [
             {
                 path: 'login',
-                component: UserAccountLoginViewer  
+                component: UserAccountLoginViewer,
+                canActivate: [AnonimousGuard]
             },
              {
                 path: 'register',
                 component: UserAccountRegisterViewer,
-                canActivate: [AuthGuard],  
+                canActivate: [AuthGuard]
             }
         ]
   },
@@ -40,7 +42,8 @@ const routes : Routes = [
 
     ],
     providers: [
-        AuthGuard
+        AuthGuard,
+        AnonimousGuard
     ]
 })
 

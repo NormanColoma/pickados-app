@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, DoCheck } from '@angular/core';
 import { Nav } from "app/header/nav.interface";
 import { UserAccountService } from "app/user-account/user-account.service";
+import { Subscription } from "rxjs/Subscription";
 
 @Component({
     selector: 'header-component',
@@ -25,11 +26,15 @@ import { UserAccountService } from "app/user-account/user-account.service";
 export class HeaderComponent implements OnInit {
 
   isLoggedIn: boolean;
+  subscription:Subscription;
 
   constructor(private userAccountService: UserAccountService){}
 
   ngOnInit(): void {
-   this.isLoggedIn = this.userAccountService.isLogged();
+      this.subscription = this.userAccountService.userLoggedIn$.subscribe(result => {
+          console.log(result);
+          this.isLoggedIn = result;
+      });
   }
 
   onLogout(){
