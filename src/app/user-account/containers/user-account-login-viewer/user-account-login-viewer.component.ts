@@ -3,6 +3,8 @@ import { UserAccountCredentials } from "app/user-account/models/user-account-cre
 import { UserAccountService } from "app/user-account/user-account.service";
 import { UserAccount } from "app/user-account/models/user-account.interface";
 
+import 'rxjs/add/operator/catch';
+
 @Component({
     selector: 'user-account-login-viewer',
     styleUrls: ['./user-account-login-viewer.component.css'],
@@ -28,13 +30,21 @@ import { UserAccount } from "app/user-account/models/user-account.interface";
                     </div>
                 </div>
             </div>
+            <div class="col-md-4 error-container" *ngIf="error">
+                <div class="alert alert-danger" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <strong>No se pudo autenticar.</strong> El usuario o la contraseña no son correctos.
+                </div>
+            </div>
         </div>
-        
     `
 })
 
 export class UserAccountLoginViewer{
 
+    private error = false;
     constructor(private userAccountService: UserAccountService){}
 
     onLoginAccount(event : UserAccountCredentials){
@@ -42,9 +52,13 @@ export class UserAccountLoginViewer{
         .login(event)
         .subscribe((data: boolean) => {
             if (data) {
-                debugger;
                 this.userAccountService.redirectAfterLogin();
             }
-        });
+        }, error => this.showErrorMessage());
+    }
+
+    showErrorMessage() {
+        this.error = true;
+        console.log("There was an error");
     }
 }
