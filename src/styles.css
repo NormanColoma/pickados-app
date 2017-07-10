@@ -1,1 +1,12 @@
-/* You can add global styles to this file, and also import other style files */
+#main-container{
+    margin-top: 20px;
+}
+
+
+.breadcrumb {
+    background-color: transparent;
+}
+
+.default-message {
+    font-size: 14px;
+}
