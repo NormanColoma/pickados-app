@@ -6,12 +6,15 @@ import { ChartsModule } from 'ng2-charts/ng2-charts';
 
 import { AppComponent } from './app.component';
 import { HeaderModule } from './header/header.module';
-import { LoginModule } from "app/login/login.module";
 import { AppRoutingModule } from './app.routing.module';
 import { HomeModule } from "app/home/home.module";
+<<<<<<< HEAD
 import { PostsDashboardModule } from "app/posts-dashboard/posts-dashboard.module";
 import { TipsterModule } from "app/tipsters/tipster.module";
 import { UserStatsModule} from "app/user-stats/user-stats.module";
+=======
+import { UserAccountModule } from "app/user-account/user-account.module";
+>>>>>>> Refactored
 
 @NgModule({
   declarations: [
@@ -23,11 +26,14 @@ import { UserStatsModule} from "app/user-stats/user-stats.module";
     HttpModule,
     ChartsModule,
     HeaderModule,
-    LoginModule,
     HomeModule,
+<<<<<<< HEAD
     PostsDashboardModule,
     UserStatsModule,
     TipsterModule,
+=======
+    UserAccountModule,
+>>>>>>> Refactored
     AppRoutingModule
   ],
   providers: [],
