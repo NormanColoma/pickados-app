@@ -30,12 +30,20 @@ import 'rxjs/add/operator/catch';
                     </div>
                 </div>
             </div>
-            <div class="col-md-4 error-container" *ngIf="error">
+            <div class="col-md-4 error-container" *ngIf="wrongCredentials">
                 <div class="alert alert-danger" role="alert">
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                     <strong>No se pudo autenticar.</strong> El usuario o la contraseña no son correctos.
+                </div>
+            </div>
+            <div class="col-md-4 error-container" *ngIf="error">
+                <div class="alert alert-danger" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <strong>Fallo en el servidor.</strong> Se produjo un fallo en el servidor, inténtelo de nuevo.
                 </div>
             </div>
         </div>
@@ -45,20 +53,25 @@ import 'rxjs/add/operator/catch';
 export class UserAccountLoginViewer{
 
     private error = false;
+    private wrongCredentials = false;
     constructor(private userAccountService: UserAccountService){}
 
     onLoginAccount(event : UserAccountCredentials){
+        this.wrongCredentials = false;
+        this.error = false;
         this.userAccountService
         .login(event)
         .subscribe((data: boolean) => {
+            debugger;
             if (data) {
                 this.userAccountService.redirectAfterLogin();
+            } else {
+                this.wrongCredentials = true;
             }
         }, error => this.showErrorMessage());
     }
 
     showErrorMessage() {
         this.error = true;
-        console.log("There was an error");
     }
 }

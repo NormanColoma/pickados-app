@@ -33,9 +33,12 @@ export class UserAccountService {
         return this.http
             .post(`${API_URL}/Login`, account, options)
             .map((response : Response) => {
-                this.setLoggedUser(response.json());
-                this.loggedInSource.next(true);
-                return Observable.of(true);
+                if(response.json()){
+                    this.setLoggedUser(response.json());
+                    this.loggedInSource.next(true);
+                    return true;
+                }
+                return false;
             })
             .catch((error: Response) => {
                  return Observable.throw(error);
