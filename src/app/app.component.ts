@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, DoCheck } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import {ViewEncapsulation} from '@angular/core';
 
@@ -9,5 +9,4 @@ import {ViewEncapsulation} from '@angular/core';
   encapsulation: ViewEncapsulation.None
 })
 export class AppComponent {
-  title = 'app works!';
 }
