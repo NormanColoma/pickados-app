@@ -8,13 +8,11 @@ import { AppComponent } from './app.component';
 import { HeaderModule } from './header/header.module';
 import { AppRoutingModule } from './app.routing.module';
 import { HomeModule } from "app/home/home.module";
-<<<<<<< HEAD
 import { PostsDashboardModule } from "app/posts-dashboard/posts-dashboard.module";
 import { TipsterModule } from "app/tipsters/tipster.module";
 import { UserStatsModule} from "app/user-stats/user-stats.module";
-=======
 import { UserAccountModule } from "app/user-account/user-account.module";
->>>>>>> Refactored
+import { UserAccountService } from "app/user-account/user-account.service";
 
 @NgModule({
   declarations: [
@@ -27,16 +25,15 @@ import { UserAccountModule } from "app/user-account/user-account.module";
     ChartsModule,
     HeaderModule,
     HomeModule,
-<<<<<<< HEAD
     PostsDashboardModule,
     UserStatsModule,
     TipsterModule,
-=======
     UserAccountModule,
->>>>>>> Refactored
     AppRoutingModule
   ],
-  providers: [],
+  providers: [
+    UserAccountService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

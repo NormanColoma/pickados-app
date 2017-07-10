@@ -40,7 +40,6 @@ const routes : Routes = [
 
     ],
     providers: [
-        UserAccountService,
         AuthGuard
     ]
 })

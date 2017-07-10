@@ -17,7 +17,6 @@ const TIPSTER_URL : string = 'http://localhost:16209/api/Tipster'
 @Injectable()
 export class UserAccountService {
     
-    private isLoggedIn : boolean = false;
     private loggedInUser: UserAccount;
     private redirectUrl: string;
 
@@ -29,9 +28,8 @@ export class UserAccountService {
         return this.http
             .post(`${TIPSTER_URL}/Login`, account, options)
             .map((response : Response) => {
-                this.isLoggedIn = true;
-                this.loggedInUser = response.json();
-                debugger;
+                localStorage.setItem('loggedIn', 'true');
+                localStorage.setItem('loggedInUser', JSON.stringify(response.json()));
                 return true;
             })
             .catch((error: Response) => {
@@ -41,7 +39,9 @@ export class UserAccountService {
     }
 
     isLogged(){
-        return this.isLoggedIn;
+        if(localStorage.getItem('loggedIn'))
+            return true;
+        return false;
     }
 
     setRedirectUrl(url: string) {
@@ -50,5 +50,11 @@ export class UserAccountService {
 
     redirectAfterLogin(){
         this.router.navigate([this.redirectUrl]);
+    }
+
+    logOut() {
+        localStorage.removeItem('loggedIn');
+        localStorage.removeItem('loggedInUser');
+        this.router.navigate(['home']);
     }
 }
