@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { UserDashboardService } from "app/user-dashboard/user-dashboard.service";
 
 @Component({
     selector: 'user-dashboard',
@@ -42,4 +43,14 @@ import { Component } from '@angular/core';
     </div>`
 })
 
-export class UserDashboardComponent { }
+export class UserDashboardComponent implements OnInit {
+    
+    constructor(private userDashboardService : UserDashboardService){}
+
+    ngOnInit(): void {
+        this.userDashboardService.loadTimeline(32769)
+        .subscribe((data) => {
+            debugger;
+        });
+    }
+}
