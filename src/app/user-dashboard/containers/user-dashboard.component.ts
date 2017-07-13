@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserDashboardService } from "app/user-dashboard/user-dashboard.service";
+import { Post } from "app/user-dashboard/models/post.interface";
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
     selector: 'user-dashboard',
@@ -15,42 +17,28 @@ import { UserDashboardService } from "app/user-dashboard/user-dashboard.service"
                     <h5 class="mb-1">Tu Timeline</h5>
                 </div>
             </a>
-            <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
-                <div class="d-flex w-100 justify-content-between">
-                <h5 class="mb-1">List group item heading</h5>
-                <small>3 days ago</small>
-                </div>
-                <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
-                <small>Donec id elit non mi porta.</small>
-            </a>
-            <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
-                <div class="d-flex w-100 justify-content-between">
-                <h5 class="mb-1">List group item heading</h5>
-                <small class="text-muted">3 days ago</small>
-                </div>
-                <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
-                <small class="text-muted">Donec id elit non mi porta.</small>
-            </a>
-            <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
-                <div class="d-flex w-100 justify-content-between">
-                <h5 class="mb-1">List group item heading</h5>
-                <small class="text-muted">3 days ago</small>
-                </div>
-                <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
-                <small class="text-muted">Donec id elit non mi porta.</small>
-            </a>
+            <user-dashboard-post *ngFor="let post of posts;" [post]="post"></user-dashboard-post>
         </div>
     </div>`
 })
 
 export class UserDashboardComponent implements OnInit {
     
-    constructor(private userDashboardService : UserDashboardService){}
+    private posts : Post [];
+
+    constructor(private userDashboardService : UserDashboardService, 
+        private router: Router,  private route: ActivatedRoute,){}
 
     ngOnInit(): void {
-        this.userDashboardService.loadTimeline(32769)
-        .subscribe((data) => {
+        this.route.data
+        .subscribe((data : { posts: Post []}) => {
+            this.posts = data.posts;
             debugger;
-        });
+      });
+        /*this.userDashboardService.loadTimeline(32769)
+        .subscribe((data : Post[]) => {
+            this.posts = data;
+            debugger;
+        });*/
     }
 }
