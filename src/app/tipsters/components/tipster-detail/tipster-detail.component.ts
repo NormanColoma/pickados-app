@@ -7,5 +7,5 @@ import { Component, Input  } from '@angular/core';
   styleUrls: ['./tipster-detail.component.css']
 })
 export class TipsterDetailComponent {
-  // @Input() post: Post;
+  @Input() tipster: any;
 }

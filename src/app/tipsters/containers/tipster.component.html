@@ -2,17 +2,17 @@
   <div class="row" style="margin-bottom: 40px">
     <div class="col-md-2"></div>
     <div class="col-md-8">
-      <search-form></search-form>
+      
       </div>
   </div>
   
   <div class="row">
     <div class="col-md-3">
-      <!-- <user-panel-component></user-panel-component> -->
+      <search-form (sportChangeEvent)="setSportFilter($event)" (premiumFilterEvent)="setPremiumFilter($event)" (sortChangeEvent)="sortBy($event)"
+       [(sportFilter)]="sportFilter" [(premiumFilter)]="premiumFilter" [(sortFilter)]="sortFilter"></search-form>
     </div>
     <div class="col-md-6">
-      <!-- <tipster-detail *ngFor="let post of posts" [post]="post"></tipster-detail> -->
-      <tipster-detail></tipster-detail>
-      <tipster-detail></tipster-detail>
+      <tipster-detail *ngFor="let tipster of currentTipsters" [tipster]="tipster"></tipster-detail>
     </div>
 </div>
+

@@ -8,6 +8,7 @@ import { Http, Response, RequestOptions, Headers } from '@angular/http';
 import { Tipster } from 'app/tipsters/models/tipster';
 
 const TIPSTER_URL : string = 'http://localhost:16209/api/Tipster'
+const TIPSTER_STATS_URL : string = 'http://localhost:16209/api/TipsterStats'
 
 @Injectable()
 export class TipstersService {
@@ -21,11 +22,11 @@ export class TipstersService {
             .map((response : Response) => response.json());
     }
 
-    getAll(): Observable<Tipster[]>{
+    getAll(): Observable<any[]>{
         let headers = new Headers({ 'Content-Type': 'application/json' });
         let options = new RequestOptions({ headers: headers });
         return this.http
-            .get(`${TIPSTER_URL}/all`, options)
+            .get(`${TIPSTER_STATS_URL}/GetAll`, options)
             .map((response : Response) => response.json());
     }
 }

@@ -1,1 +1,67 @@
 /* You can add global styles to this file, and also import other style files */
+.container-fluid {
+     font-family: 'Lato', sans-serif;
+     background-color: #F9F8FA;
+}
+
+.navbar {
+    background-color: #034d42;
+    padding: .5rem .5rem .1rem .1rem
+}
+
+.navbar-light .navbar-nav .nav-link {
+    color: white;
+}
+
+.navbar-light .navbar-nav .nav-link:hover {
+    color: #8ec048;
+}
+
+.nav-link.active {
+    color: #8ec048;
+}
+
+.navbar-light .navbar-nav .active>.nav-link, .navbar-light .navbar-nav .nav-link.active, .navbar-light .navbar-nav .nav-link.open, .navbar-light .navbar-nav .open>.nav-link {
+    color: #8ec048;
+}
+
+.nav-item{}
+
+
+.label {
+    background-color: #d1dade;
+    color: #5e5e5e;
+    font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-weight: 600;
+    text-shadow: none;
+    display: inline;
+    padding: .1em .3em .1em;
+    font-size: 75%;
+    font-weight: 700;
+    line-height: 1;
+    color: #fff;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    border-radius: .25em;
+}
+
+.label-danger, .badge-danger {
+    background-color: #ed5565;
+    color: #FFFFFF;
+}
+
+p.labelp {
+    margin-left: 6px;
+    margin-top: 1px;
+    display: block;
+}
+
+.btn-teal {
+    color: #fff;
+    background-color: #18ba9b;
+}
+
+.btn {
+    cursor: pointer;
+}

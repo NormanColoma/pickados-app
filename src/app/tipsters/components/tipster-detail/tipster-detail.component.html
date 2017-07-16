@@ -5,28 +5,55 @@
     </div>
     <div class="col-md-10">
       <div class="row">
-        <h2> Rushverde</h2>
+        <h2> {{tipster.Alias | titleCase }}</h2> <p *ngIf="tipster.Premium==true" class="labelp"><span class="label label-danger">Premium</span></p>
       </div>
       <hr size="15" style="margin-top: 0px; margin-bottom: 0px;" />
       <div class="row">
-        <div class="col-md-2">
-          <span class="stats-info-value">20%</span><br />
-          Yield
+        <div class="col-md-3" style="text-align: center">
+          <span *ngIf="tipster.GetStatsOfTipster.length > 3" class="stats-info-value">
+            <span *ngIf="tipster.GetStatsOfTipster[3].Benefit > 0">+</span>
+            <span *ngIf="tipster.GetStatsOfTipster[3].Benefit < 0">-</span>
+            {{tipster.GetStatsOfTipster[3].Benefit}}
+          </span>
+          <span *ngIf="tipster.GetStatsOfTipster.length == 0" class="stats-info-value">-</span>
+          <br />
+          Unidades
         </div>
-        <div class="col-md-2">
-          <span class="stats-info-value">457</span><br />
-          Picks
+        <div class="col-md-2" style="text-align: center">
+          <span *ngIf="tipster.GetStatsOfTipster.length > 3" class="stats-info-value">{{tipster.GetStatsOfTipster[3].Yield}}%</span>
+          <span *ngIf="tipster.GetStatsOfTipster.length == 0" class="stats-info-value">-</span>
+          <br />Yield
         </div>
-        <div class="col-md-2">
-          <span class="stats-info-value">56%</span><br />
-          Acierto
+        <div class="col-md-2" style="text-align: center">
+          <span *ngIf="tipster.GetStatsOfTipster.length > 3" class="stats-info-value">{{tipster.GetStatsOfTipster[3].TotalPicks}}</span>
+          <span *ngIf="tipster.GetStatsOfTipster.length == 0" class="stats-info-value">-</span>
+          <br />Picks
         </div>
-        <div class="col-md-2">
-          <span class="stats-info-value">224</span><br />
-          Seguidores
+
+        <div class="col-md-1">
         </div>
-        >> Ir a stats completas
-      </div>
+        <div class="col-md-4">
+          <div style="margin-left: 20px">
+            <button type="button" [routerLink]="['/stats', tipster.Alias]" class="btn btn-sm btn-teal" >Estadísticas</button>
+          </div>
+          <div style="margin-left: 20px; margin-top: 1px">
+            <button *ngIf="tipster.Premium==true" type="button" class="btn btn-sm btn-info" (click)="modal.show()">Subscribirse</button></div>
+          </div>
+        </div>
     </div>
   </div>
 </div>
+      
+  <app-modal #modal>
+    <div class="app-modal-header">
+      Subscripción Premium
+    </div>
+    <div class="app-modal-body">
+      Ha elegido subscribirse al tipster {{tipster.Alias}} . Seleccione los meses deseados, y confirme si estás seguro.Se le redirigirá a 
+      la plataforma de pago. Para cualquier duda consulte los terminos y condiciones.
+    </div>
+    <div class="app-modal-footer">
+      <button type="button" class="btn btn-default" (click)="modal.hide()">Cerrar</button>
+      <button type="button" class="btn btn-primary">Contratar</button>
+    </div>
+  </app-modal>

@@ -10,11 +10,15 @@ export class RatioChartComponent implements OnInit{
     @Input() stats: Stats[];
 
     public lineChartData:Array<any>;
+    public doughnutChartData: number[];
 
     ngOnInit(): void {
         this.lineChartData = [
         {data: [this.stats[3].Yield, this.stats[2].Yield, this.stats[1].Yield, this.stats[0].Yield], label: '% Yield'}
       ];
+      console.log(this.stats[0].Wins + "jdkasjlka");
+      this.doughnutChartData = [this.stats[0].Wins, this.stats[0].Voids, this.stats[0].Lost];
+      //this.doughnutChartData[0]= this.stats[0].Wins;
     }
 
   // lineChart
@@ -56,7 +60,7 @@ export class RatioChartComponent implements OnInit{
     public lineChartType:string = 'line';
 
     public doughnutChartLabels:string[] = ['Aciertos', 'Fallos', 'Nulos'];
-    public doughnutChartData:number[] = [55, 40, 8];
+  
     public doughnutChartType:string = 'doughnut';
 
     public randomize():void {
