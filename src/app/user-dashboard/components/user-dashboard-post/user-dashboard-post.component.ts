@@ -9,7 +9,7 @@ import { PickOfPost } from "app/user-dashboard/models/pick.interface";
         <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
                 <div class="d-flex w-100 justify-content-between">
                     <h5 class="mb-1" class="text-primary">@{{ post.Tipster }}</h5>
-                    <small><em>{{ post.Created_at }}</em></small>
+                    <small><em>{{ post.Created_at | date:'medium' }}</em></small>
                 </div>
                 <p>
                     <small>
