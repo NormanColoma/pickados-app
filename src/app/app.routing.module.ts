@@ -1,17 +1,13 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from "app/app.component";
-import { LoginComponent } from "app/login/login.component";
 import { HomeComponent } from "app/home/home.component";
 import { PostsDashboardComponent } from "app/posts-dashboard/containers/posts-dashboard.component";
 import { UserStatsComponent } from "app/user-stats/containers/user-stats.component";
 import { TipsterComponent } from "app/tipsters/containers/tipster.component";
+import { UserAccountModule } from "app/user-account/user-account.module";
 
 const appRoutes : Routes = [
-  {
-    path: 'login',
-    component: LoginComponent
-  },
   {
     path: 'home',
     component: HomeComponent

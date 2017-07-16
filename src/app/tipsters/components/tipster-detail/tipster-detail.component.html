@@ -1,7 +1,7 @@
 <div class="tipster-block">
   <div class="row">
     <div class="col-md-2">
-      avatar
+      <img src="../../../../assets/64x64/64_1.png" alt="Smiley face">
     </div>
     <div class="col-md-10">
       <div class="row">
@@ -44,13 +44,24 @@
   </div>
 </div>
       
-  <app-modal #modal>
+  <app-modal style="margin-top: 40px" #modal>
     <div class="app-modal-header">
       Subscripción Premium
     </div>
     <div class="app-modal-body">
       Ha elegido subscribirse al tipster {{tipster.Alias}} . Seleccione los meses deseados, y confirme si estás seguro.Se le redirigirá a 
       la plataforma de pago. Para cualquier duda consulte los terminos y condiciones.
+      <hr>
+      <div>
+      Precio mensual: {{tipster.Subscription_fee}}€<br>
+      Cantidad de meses:
+        <select [ngModel]="monthsToBuy"  (ngModelChange)="monthsToBuyChange($event)" name="months" class="form-control" id="sport">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+        </select>
+      Precio total: {{tipster.Subscription_fee * monthsToBuy}}€
+      </div>
     </div>
     <div class="app-modal-footer">
       <button type="button" class="btn btn-default" (click)="modal.hide()">Cerrar</button>
