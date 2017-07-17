@@ -8,4 +8,7 @@ export class Stats {
     TotalPicks: number;
     OddAccumulator: number;
     TotalStaked: number;
+    Wins: number;
+    Voids: number;
+    Lost: number;
 }

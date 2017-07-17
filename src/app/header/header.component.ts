@@ -9,7 +9,7 @@ import { Subscription } from "rxjs/Subscription";
         <nav class="navbar navbar-toggleable-md navbar-light bg-faded">
             <a class="navbar-brand nav-link" routerLink="/home" routerLinkActive="active">Pickados</a>
             <div class="collapse navbar-collapse" id="navbarNav">
-                <nav-header [items]="nav" class="mr-auto"></nav-header>
+                <nav-header  *ngIf="isLoggedIn" [items]="nav" class="mr-auto"></nav-header>
                 <nav-header [items]="anonimousNav" *ngIf="!isLoggedIn"></nav-header>
                 <nav-header 
                     [items]="loggedInNav" 
@@ -47,6 +47,11 @@ export class HeaderComponent implements OnInit {
       link: '/suscriptions',
       name: 'Suscripciones',
       exact: false
+    },
+    {
+      link: '/tipsters',
+      name: 'Tipsters',
+      exact: false
     }
   ];
 
@@ -68,6 +73,6 @@ export class HeaderComponent implements OnInit {
       link: '/home',
       name: 'Salir',
       exact: true
-    },
+    }
   ]
 }

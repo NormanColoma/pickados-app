@@ -1,32 +1,75 @@
 <div class="tipster-block">
   <div class="row">
-    <div class="col-md-2">
-      avatar
+    <div class="col-md-2 avatar-content">
+      <img src="../../../../assets/64x64/64_1.png" alt="avatar">
     </div>
     <div class="col-md-10">
       <div class="row">
-        <h2> Rushverde</h2>
+        <h2> {{tipster.Alias | titleCase }}</h2> <p *ngIf="tipster.Premium==true" class="labelp">
+          <span class="label label-danger">Premium</span></p>
+          <img style="margin-top:6px; margin-left: 4px" src="../../../../assets/ico/{{tipster.Sport}}.ico" width="20" height="20"alt="sport">
       </div>
       <hr size="15" style="margin-top: 0px; margin-bottom: 0px;" />
       <div class="row">
-        <div class="col-md-2">
-          <span class="stats-info-value">20%</span><br />
-          Yield
+        <div class="col-md-3">
+          <div style="text-align: center">
+            {{tipster.Followers}}  <img src="../../../../assets/ico/follower.PNG" width="14" height="14" alt="follower"><br>
+            <div style="margin-top: 1px">
+              <button *ngIf="tipster.Premium==true" type="button" class="btn btn-sm btn-info" (click)="modal.show()">Contratar</button>
+              <button *ngIf="tipster.Premium!=true" type="button" class="btn btn-sm btn-info" (click)="modal.show()"> Seguir </button>
+            </div>
+          </div>
         </div>
-        <div class="col-md-2">
-          <span class="stats-info-value">457</span><br />
-          Picks
+        <div class="col-md-2" style="text-align: center">
+          <span *ngIf="tipster.GetStatsOfTipster.length > 3" class="stats-info-value">
+            {{tipster.GetStatsOfTipster[3].Benefit}}
+          </span>
+          <span *ngIf="tipster.GetStatsOfTipster.length == 0" class="stats-info-value">-</span>
+          <br />
+          Uds.
         </div>
-        <div class="col-md-2">
-          <span class="stats-info-value">56%</span><br />
-          Acierto
+        <div class="col-md-2" style="text-align: center">
+          <span *ngIf="tipster.GetStatsOfTipster.length > 3" class="stats-info-value">{{tipster.GetStatsOfTipster[3].Yield}}%</span>
+          <span *ngIf="tipster.GetStatsOfTipster.length == 0" class="stats-info-value">-</span>
+          <br />Yield
         </div>
-        <div class="col-md-2">
-          <span class="stats-info-value">224</span><br />
-          Seguidores
+        <div class="col-md-2" style="text-align: center">
+          <span *ngIf="tipster.GetStatsOfTipster.length > 3" class="stats-info-value">{{tipster.GetStatsOfTipster[3].TotalPicks}}</span>
+          <span *ngIf="tipster.GetStatsOfTipster.length == 0" class="stats-info-value">-</span>
+          <br />Picks
         </div>
-        >> Ir a stats completas
-      </div>
+
+        
+        <div class="col-md-3">
+          <div style="margin-top: 26px">
+            <button type="button" [routerLink]="['/stats', tipster.Alias]" class="btn btn-sm btn-teal" >Estadísticas</button>
+          </div>
+        </div>
     </div>
   </div>
 </div>
+      
+  <app-modal style="margin-top: 40px" #modal>
+    <div class="app-modal-header">
+      Subscripción Premium
+    </div>
+    <div class="app-modal-body">
+      Ha elegido subscribirse al tipster {{tipster.Alias}} . Seleccione los meses deseados, y confirme si estás seguro.Se le redirigirá a 
+      la plataforma de pago. Para cualquier duda consulte los terminos y condiciones.
+      <hr>
+      <div>
+      Precio mensual: {{tipster.Subscription_fee}}€<br>
+      Cantidad de meses:
+        <select [ngModel]="monthsToBuy"  (ngModelChange)="monthsToBuyChange($event)" name="months" class="form-control" id="sport">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+        </select>
+      Precio total: {{tipster.Subscription_fee * monthsToBuy}}€
+      </div>
+    </div>
+    <div class="app-modal-footer">
+      <button type="button" class="btn btn-default" (click)="modal.hide()">Cerrar</button>
+      <button type="button" class="btn btn-primary">Contratar</button>
+    </div>
+  </app-modal>
