@@ -1,7 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
-.container-fluid {
+body {
      font-family: 'Lato', sans-serif;
-     background-color: #F9F8FA;
+     background-color: rgba(3, 77, 66, 0.09);
 }
 
 .navbar {
@@ -25,7 +25,10 @@
     color: #8ec048;
 }
 
-.nav-item{}
+.card {
+    border-left: 4px solid;
+    border-left-color: rgba(3, 77, 66, 0.71);
+}
 
 
 .label {

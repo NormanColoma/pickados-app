@@ -1,23 +1,32 @@
 <div class="tipster-block">
   <div class="row">
-    <div class="col-md-2">
-      <img src="../../../../assets/64x64/64_1.png" alt="Smiley face">
+    <div class="col-md-2 avatar-content">
+      <img src="../../../../assets/64x64/64_1.png" alt="avatar">
     </div>
     <div class="col-md-10">
       <div class="row">
-        <h2> {{tipster.Alias | titleCase }}</h2> <p *ngIf="tipster.Premium==true" class="labelp"><span class="label label-danger">Premium</span></p>
+        <h2> {{tipster.Alias | titleCase }}</h2> <p *ngIf="tipster.Premium==true" class="labelp">
+          <span class="label label-danger">Premium</span></p>
+          <img style="margin-top:6px; margin-left: 4px" src="../../../../assets/ico/{{tipster.Sport}}.ico" width="20" height="20"alt="sport">
       </div>
       <hr size="15" style="margin-top: 0px; margin-bottom: 0px;" />
       <div class="row">
-        <div class="col-md-3" style="text-align: center">
+        <div class="col-md-3">
+          <div style="text-align: center">
+            {{tipster.Followers}}  <img src="../../../../assets/ico/follower.PNG" width="14" height="14" alt="follower"><br>
+            <div style="margin-top: 1px">
+              <button *ngIf="tipster.Premium==true" type="button" class="btn btn-sm btn-info" (click)="modal.show()">Contratar</button>
+              <button *ngIf="tipster.Premium!=true" type="button" class="btn btn-sm btn-info" (click)="modal.show()"> Seguir </button>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-2" style="text-align: center">
           <span *ngIf="tipster.GetStatsOfTipster.length > 3" class="stats-info-value">
-            <span *ngIf="tipster.GetStatsOfTipster[3].Benefit > 0">+</span>
-            <span *ngIf="tipster.GetStatsOfTipster[3].Benefit < 0">-</span>
             {{tipster.GetStatsOfTipster[3].Benefit}}
           </span>
           <span *ngIf="tipster.GetStatsOfTipster.length == 0" class="stats-info-value">-</span>
           <br />
-          Unidades
+          Uds.
         </div>
         <div class="col-md-2" style="text-align: center">
           <span *ngIf="tipster.GetStatsOfTipster.length > 3" class="stats-info-value">{{tipster.GetStatsOfTipster[3].Yield}}%</span>
@@ -30,14 +39,10 @@
           <br />Picks
         </div>
 
-        <div class="col-md-1">
-        </div>
-        <div class="col-md-4">
-          <div style="margin-left: 20px">
+        
+        <div class="col-md-3">
+          <div style="margin-top: 26px">
             <button type="button" [routerLink]="['/stats', tipster.Alias]" class="btn btn-sm btn-teal" >Estadísticas</button>
-          </div>
-          <div style="margin-left: 20px; margin-top: 1px">
-            <button *ngIf="tipster.Premium==true" type="button" class="btn btn-sm btn-info" (click)="modal.show()">Subscribirse</button></div>
           </div>
         </div>
     </div>
