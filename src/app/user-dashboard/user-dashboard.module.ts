@@ -6,23 +6,40 @@ import { RouterModule, Routes } from '@angular/router';
 import { UserDashboardService } from "app/user-dashboard/user-dashboard.service";
 import { UserDashboardPostComponent } from "app/user-dashboard/components/user-dashboard-post/user-dashboard-post.component";
 import { UserDashboardResolver } from "app/user-dashboard/user-dashboard-resolver.service";
+import { UserDashboardTimelineComponent } from "app/user-dashboard/containers/user-dashboard-timeline/user-dashboard-timeline.component";
+import { UserDashboardEventsComponent } from "app/user-dashboard/containers/user-dashboard-events/user-dashboard-events.component";
+import { BreadCrumbPipe } from "app/user-dashboard/breadcrumb.pipe";
 
 
 const routes: Routes = [
     {
         path: 'dashboard',
         component: UserDashboardComponent,
+        children: [
+            {
+                path: '',
+                component: UserDashboardTimelineComponent,
+                resolve: {
+                    posts: UserDashboardResolver
+                }
+            },
+            {
+                path: 'events',
+                component: UserDashboardEventsComponent,
+            }
+        ],
         canActivate: [AuthGuard],
-        resolve: {
-            posts: UserDashboardResolver
-        }
+        
     },
 ]
 
 @NgModule({
     declarations: [
         UserDashboardComponent,
-        UserDashboardPostComponent
+        UserDashboardPostComponent,
+        UserDashboardTimelineComponent,
+        UserDashboardEventsComponent,
+        BreadCrumbPipe
     ],
     imports: [
         CommonModule,
