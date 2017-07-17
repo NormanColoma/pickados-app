@@ -14,7 +14,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 
 export class UserDashboardTimelineComponent implements OnInit{
-     private posts : Post [];
+    private posts : Post [];
 
     constructor(private router: Router,  private route: ActivatedRoute,){}
 
@@ -22,7 +22,6 @@ export class UserDashboardTimelineComponent implements OnInit{
         this.route.data
         .subscribe((data : { posts: Post []}) => {
             this.posts = data.posts;
-            debugger;
       });
     }
 }

@@ -9,6 +9,7 @@ import { UserDashboardResolver } from "app/user-dashboard/user-dashboard-resolve
 import { UserDashboardTimelineComponent } from "app/user-dashboard/containers/user-dashboard-timeline/user-dashboard-timeline.component";
 import { UserDashboardEventsComponent } from "app/user-dashboard/containers/user-dashboard-events/user-dashboard-events.component";
 import { BreadCrumbPipe } from "app/user-dashboard/breadcrumb.pipe";
+import { UserDashboardEventsResolver } from "app/user-dashboard/user-dashboard-events-resolver.service";
 
 
 const routes: Routes = [
@@ -26,6 +27,9 @@ const routes: Routes = [
             {
                 path: 'events',
                 component: UserDashboardEventsComponent,
+                resolve: {
+                    events: UserDashboardEventsResolver
+                }
             }
         ],
         canActivate: [AuthGuard],
@@ -49,7 +53,8 @@ const routes: Routes = [
     ],
     providers : [
         UserDashboardService,
-        UserDashboardResolver
+        UserDashboardResolver,
+        UserDashboardEventsResolver
     ]
 })
 

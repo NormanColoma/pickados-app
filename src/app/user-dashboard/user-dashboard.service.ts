@@ -4,7 +4,9 @@ import { Observable } from "rxjs/Observable";
 
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
+
 import { Post } from "app/user-dashboard/models/post.interface";
+import { Event } from "app/user-dashboard/models/event.interface";
 
 const API_URL : string = 'http://localhost:16209/api/Tipster'
 
@@ -21,5 +23,18 @@ export class UserDashboardService {
          return this.http
             .get(TIMELINE_URL, options)
             .map((response : Response) => response.json())  
+     }
+
+     loadEvents() : Observable<Event[]> {
+         const date = new Date();
+         const event_date = date.getFullYear()+"-"+ (date.getMonth()+1) + "-" + date.getDate();
+         debugger;
+         const EVENTS_URL = `http://localhost:16209/api/events?from=${event_date}&to=${event_date}`;
+         
+         return this.http
+            .get(EVENTS_URL)
+            .map((response : Response) => {
+                return JSON.parse(response.json());
+            })  
      }
 }
