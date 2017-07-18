@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, Output, OnInit } from '@angular/core';
 // import { Post} from 'app/posts-dashboard/services/post';
 
 @Component({
@@ -8,6 +8,9 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class TipsterDetailComponent implements OnInit {
   @Input() tipster: any;
+  @Input() followed: boolean;
+  @Output() followEvent = new EventEmitter();
+
   monthsToBuy: number;
 
   ngOnInit(): void {
@@ -16,5 +19,9 @@ export class TipsterDetailComponent implements OnInit {
 
   monthsToBuyChange(newValue): void {
     this.monthsToBuy = newValue;
+  }
+
+  follow(followId: string): void{
+    this.followEvent.emit(followId);
   }
 }

@@ -15,8 +15,9 @@
           <div style="text-align: center">
             {{tipster.Followers}}  <img src="../../../../assets/ico/follower.PNG" width="14" height="14" alt="follower"><br>
             <div style="margin-top: 1px">
-              <button *ngIf="tipster.Premium==true" type="button" class="btn btn-sm btn-info" (click)="modal.show()">Contratar</button>
-              <button *ngIf="tipster.Premium!=true" type="button" class="btn btn-sm btn-info" (click)="modal.show()"> Seguir </button>
+              <button *ngIf="tipster.Premium==true && followed == false" type="button" class="btn btn-sm btn-info" (click)="modal.show()">Contratar</button>
+              <button *ngIf="tipster.Premium!=true && followed==false" type="button" class="btn btn-sm btn-info" (click)="follow(tipster.Id)"> Seguir </button>
+              <span style="font-size: 75%" *ngIf="followed==true"> Siguiendo </span>
             </div>
           </div>
         </div>

@@ -12,6 +12,7 @@ import { TipstersService } from 'app/tipsters/tipsters.service';
 export class TipsterComponent implements OnInit{
   tipsters: any[];
   currentTipsters: any[];
+  currentFollowers: any[];
 
   premiumFilter: string;
   sortFilter: string;
@@ -22,6 +23,7 @@ export class TipsterComponent implements OnInit{
     this.sortFilter = 'yield';
     this.sportFilter = 'All';
     this.getTipsters();
+    this.getCurrentFollowers();
   }
 
   constructor(private tipstersService: TipstersService) { }
@@ -34,6 +36,33 @@ export class TipsterComponent implements OnInit{
       this.currentTipsters = tipsters;
       this.refreshSearch(this.premiumFilter, this.sortFilter, this.sportFilter);
     });
+  }
+
+  follow(followId): void {
+      // GET CURRENT USER ID
+      var currentUser = JSON.parse(localStorage.getItem('loggedInUser'));
+      
+      this.tipstersService
+      .addFollow(followId,currentUser.Id)
+      .subscribe((result: boolean) => {
+        //DO SOMETHING
+      })
+  }
+
+  checkIfFollow(followerId: string): boolean {
+      return this.currentFollowers.some(function (el) {
+        return el.Id === followerId;
+      });
+  }
+
+  getCurrentFollowers(): void {
+    var currentUser = JSON.parse(localStorage.getItem('loggedInUser'));
+
+    this.tipstersService
+    .getFollows(currentUser.Id)
+    .subscribe((result: any[]) => {
+      this.currentFollowers = result;
+    })
   }
 
   refreshSearch(premium: string, sort: string, sport: string): void{
