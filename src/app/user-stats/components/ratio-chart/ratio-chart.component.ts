@@ -8,6 +8,7 @@ import { Stats } from 'app/user-stats/models/stats';
 
 export class RatioChartComponent implements OnInit{
     @Input() stats: Stats[];
+    @Input() monthFilter: number;
 
     public lineChartData:Array<any>;
     public doughnutChartData: number[];
@@ -17,7 +18,9 @@ export class RatioChartComponent implements OnInit{
         {data: [this.stats[3].Yield, this.stats[2].Yield, this.stats[1].Yield, this.stats[0].Yield], label: '% Yield'}
       ];
       console.log(this.stats[0].Wins + "jdkasjlka");
-      this.doughnutChartData = [this.stats[0].Wins, this.stats[0].Voids, this.stats[0].Lost];
+      this.doughnutChartData = [this.stats[0].Wins+this.stats[1].Wins+this.stats[2].Wins+this.stats[3].Wins, 
+      this.stats[0].Voids+this.stats[1].Voids+this.stats[2].Voids+this.stats[3].Voids, 
+      this.stats[0].Lost+this.stats[1].Lost+this.stats[2].Lost+this.stats[3].Lost];
       //this.doughnutChartData[0]= this.stats[0].Wins;
     }
 
