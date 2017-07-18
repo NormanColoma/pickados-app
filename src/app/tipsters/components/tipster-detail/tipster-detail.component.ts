@@ -12,16 +12,22 @@ export class TipsterDetailComponent implements OnInit {
   @Output() followEvent = new EventEmitter();
 
   monthsToBuy: number;
+  payQty: number;
 
   ngOnInit(): void {
     this.monthsToBuy = 1;
   }
 
-  monthsToBuyChange(newValue): void {
+  monthsToBuyChange(newValue, monthly): void {
     this.monthsToBuy = newValue;
+    this.payQty = monthly * newValue;
   }
 
   follow(followId: string): void{
     this.followEvent.emit(followId);
+  }
+
+  goPaypal(): void{
+    window.open("https://paypal.me/jarubio/" + this.payQty);
   }
 }

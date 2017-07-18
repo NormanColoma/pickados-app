@@ -514,13 +514,21 @@ footer > .navbar-inverse {
 .bannerranking {
 }
 
-
+.intro-background {
+  background: url(../../assets/football-background1.jpg) no-repeat center center;
+  position: fixed;
+  right: 0;
+  left: 0;
+  top: 0;
+  z-index: -1;
+  height: 1000px;
+  background-size: cover;
+}
 .intro-header {
   padding-top: 50px; /* If you're making other pages, make sure there is 50px of padding to make sure the navbar doesn't overlap content! */
   padding-bottom: 50px;
   text-align: center;
   color: #f8f8f8;
-  background: url(../../assets/football-background1.jpg) no-repeat center center;
   background-size: cover;
 }
 
