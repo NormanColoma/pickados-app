@@ -34,6 +34,9 @@ body {
   background: rgba(0,0,0,0.6);
 }
 
+.dropdown-menu {
+    background-color: #034d42;
+}
 
 .label {
     background-color: #d1dade;

@@ -12,7 +12,7 @@ import { UserBannerComponent } from "app/user-stats/components/user-banner/user-
         UserStatsComponent,
         RatioChartComponent,
         PickSummaryComponent,
-        UserBannerComponent
+        UserBannerComponent,
     ],
     imports: [
         CommonModule, ChartsModule, FormsModule
