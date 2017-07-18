@@ -1,11 +1,11 @@
 <div class="container" >
   <div *ngIf="stats && tipster">
-    <user-banner [stats]="stats" [tipster]="tipster"></user-banner>
+    <user-banner [monthFilter]="monthFilter" [stats]="stats" [tipster]="tipster" (monthChangeEvent)="setMonth($event)"></user-banner>
   </div>
 </div>
 <div class="container">
   <div *ngIf="stats">
-    <ratio-chart [stats]="stats"></ratio-chart>
+    <ratio-chart [monthFilter]="monthFilter" [stats]="stats" ></ratio-chart>
   </div>
 </div>
 <div class="container">

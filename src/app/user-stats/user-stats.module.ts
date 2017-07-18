@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ChartsModule } from 'ng2-charts/ng2-charts';
+import { FormsModule } from '@angular/forms';
 import { UserStatsComponent } from "app/user-stats/containers/user-stats.component";
 import { RatioChartComponent } from "app/user-stats/components/ratio-chart/ratio-chart.component";
 import { PickSummaryComponent } from "app/user-stats/components/pick-summary/pick-summary.component";
@@ -14,7 +15,7 @@ import { UserBannerComponent } from "app/user-stats/components/user-banner/user-
         UserBannerComponent
     ],
     imports: [
-        CommonModule, ChartsModule
+        CommonModule, ChartsModule, FormsModule
     ],
     exports: [
 

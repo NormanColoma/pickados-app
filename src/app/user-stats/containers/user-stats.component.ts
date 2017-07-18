@@ -14,6 +14,7 @@ import { TipstersService } from 'app/tipsters/tipsters.service';
 export class UserStatsComponent  implements OnInit{
     stats: Stats[];
     tipster: Tipster;
+    monthFilter: number;
 
     user: string;
     private sub: any;
@@ -24,6 +25,7 @@ export class UserStatsComponent  implements OnInit{
                 private route: ActivatedRoute) { }
 
     ngOnInit(): void {
+        this.monthFilter = 0;
         this.sub = this.route.params.subscribe(params => {
         this.user = params['user']; 
         this.getTipsterByAlias(this.user);
@@ -47,5 +49,9 @@ export class UserStatsComponent  implements OnInit{
             .subscribe((stats: Stats[]) => {
                 this.stats = stats;
             });
+    }
+
+    setMonth(newValue): void {
+        this.monthFilter = newValue;
     }
 }
