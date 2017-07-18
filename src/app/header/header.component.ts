@@ -12,6 +12,7 @@ import { Subscription } from "rxjs/Subscription";
                 <nav-header  *ngIf="isLoggedIn" [items]="nav" class="mr-auto"></nav-header>
                 <nav-header [items]="anonimousNav" *ngIf="!isLoggedIn"></nav-header>
                 <nav-header 
+                    [profile]=true
                     [items]="loggedInNav" 
                     *ngIf="isLoggedIn" 
                     (logout)="onLogout($event)">
@@ -74,5 +75,5 @@ export class HeaderComponent implements OnInit {
       name: 'Salir',
       exact: true
     }
-  ]
+  ];
 }

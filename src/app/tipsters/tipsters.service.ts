@@ -29,4 +29,20 @@ export class TipstersService {
             .get(`${TIPSTER_STATS_URL}/GetAll`, options)
             .map((response : Response) => response.json());
     }
+
+    addFollow(followed: string, follow: string): Observable<boolean>{
+        let headers = new Headers({ 'Content-Type': 'application/json' });
+        let options = new RequestOptions({ headers: headers });
+        return this.http
+            .post(`${TIPSTER_URL}/AddingFollower?idtipster=` + followed + '&idnewfollower=' + follow, options)
+            .map((response : Response) => response.json());
+    }
+
+    getFollows(userId: string): Observable<any[]>{
+        let headers = new Headers({ 'Content-Type': 'application/json' });
+        let options = new RequestOptions({ headers: headers });
+        return this.http
+            .get(`${TIPSTER_URL}/GetFollows?id=` + userId, options)
+            .map((response : Response) => response.json());
+    }
 }

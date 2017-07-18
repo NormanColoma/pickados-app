@@ -30,6 +30,10 @@ body {
     border-left-color: rgba(3, 77, 66, 0.71);
 }
 
+.modal {
+  background: rgba(0,0,0,0.6);
+}
+
 
 .label {
     background-color: #d1dade;

@@ -15,8 +15,9 @@
           <div style="text-align: center">
             {{tipster.Followers}}  <img src="../../../../assets/ico/follower.PNG" width="14" height="14" alt="follower"><br>
             <div style="margin-top: 1px">
-              <button *ngIf="tipster.Premium==true" type="button" class="btn btn-sm btn-info" (click)="modal.show()">Contratar</button>
-              <button *ngIf="tipster.Premium!=true" type="button" class="btn btn-sm btn-info" (click)="modal.show()"> Seguir </button>
+              <button *ngIf="tipster.Premium==true && followed == false" type="button" class="btn btn-sm btn-info" (click)="modal.show()">Contratar</button>
+              <button *ngIf="tipster.Premium!=true && followed==false" type="button" class="btn btn-sm btn-info" (click)="follow(tipster.Id)"> Seguir </button>
+              <span style="font-size: 75%" *ngIf="followed==true"> Siguiendo </span>
             </div>
           </div>
         </div>
@@ -54,22 +55,26 @@
       Subscripción Premium
     </div>
     <div class="app-modal-body">
-      Ha elegido subscribirse al tipster {{tipster.Alias}} . Seleccione los meses deseados, y confirme si estás seguro.Se le redirigirá a 
-      la plataforma de pago. Para cualquier duda consulte los terminos y condiciones.
+      El tipster {{tipster.Alias}} es premium. Contrate para poder ver sus picks privados. Seleccione los meses deseados, y confirme si estás seguro.Se le redirigirá a 
+      la plataforma de pago. Para cualquier duda consulte los términos y condiciones.
       <hr>
       <div>
-      Precio mensual: {{tipster.Subscription_fee}}€<br>
-      Cantidad de meses:
-        <select [ngModel]="monthsToBuy"  (ngModelChange)="monthsToBuyChange($event)" name="months" class="form-control" id="sport">
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-        </select>
-      Precio total: {{tipster.Subscription_fee * monthsToBuy}}€
+      Coste mensual: {{tipster.Subscription_fee}}€<br>
+        <div class="form-group"><label>Meses a contratar:
+        
+          <select style="margin-left: 10px; max-width: 100px" [ngModel]="monthsToBuy" (ngModelChange)="monthsToBuyChange($event, tipster.Subscription_fee)" name="months" id="sport">
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+          </select>
+          </label>
+      </div>  
+      <span><b>Cantidad a pagar: {{tipster.Subscription_fee * monthsToBuy}}€</b></span>
+      <img style="position: fixed; bottom: 70px ; right: 20px;" src="../../../../assets/ico/paypal.png" width="150" height="55" alt="pay">
       </div>
     </div>
     <div class="app-modal-footer">
       <button type="button" class="btn btn-default" (click)="modal.hide()">Cerrar</button>
-      <button type="button" class="btn btn-primary">Contratar</button>
+      <button type="button" class="btn btn-primary" (click)="goPaypal()">Contratar</button>
     </div>
   </app-modal>
