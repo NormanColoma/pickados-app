@@ -15,7 +15,7 @@ import { UserAccount } from "app/user-account/models/user-account.interface";
 import { Router } from "@angular/router";
 
 
-const API_URL : string = 'http://localhost:16209/api/Tipster'
+const API_URL : string = 'http://13.94.138.100/api/Tipster'
 
 @Injectable()
 export class UserAccountService {

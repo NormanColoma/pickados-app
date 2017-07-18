@@ -6,4 +6,5 @@ export interface Event {
     GetAwayOfEvent_away: Team,
     Competition: string,
     Sport: string
+    match_id: string;
 }

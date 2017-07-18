@@ -11,26 +11,35 @@ import { ActivatedRoute, Router } from '@angular/router';
             <li class="breadcrumb-item active">{{ currentUrl | titlecase | breadcrumburl }}</li>
     </ol>
 
-    <div class="d-md-flex flex-row align-items-center events-side-bar">
+    <div class="d-md-flex flex-row events-side-bar">
         <div class="list-group col-md-4">
-             <a class="list-group-item list-group-item-action flex-column align-items-start bg-success text-white">
+             <a class="list-group-item flex-column align-items-start bg-success text-white">
                 <div class="d-flex w-100 justify-content-between">
                     <h3 class="mb-1">Introduce tu pick</h3>
                 </div>
             </a>
             <a routerLink="events" class="list-group-item list-group-item-action flex-column align-items-start event-row">
                 <div class="d-flex w-100 justify-content-between">
-                    <p><i class="fa fa-calendar" aria-hidden="true"></i>Próximos eventos</p>
+                    <p class="w-100 float-left">
+                        <i class="fa fa-calendar pr-2" aria-hidden="true"></i>Próximos eventos
+                        <i class="fa fa-chevron-right float-right mt-1" aria-hidden="true"></i>
+                    </p>
                 </div>
             </a>
             <a href="#" class="list-group-item list-group-item-action flex-column align-items-start event-row">
                 <div class="d-flex w-100 justify-content-between">
-                    <p><i class="fa fa-futbol-o" aria-hidden="true"></i> Fútbol</p>
+                    <p class="w-100 float-left">
+                        <i class="fa fa-futbol-o pr-2" aria-hidden="true"></i>Fútbol
+                         <i class="fa fa-chevron-right float-right mt-1" aria-hidden="true"></i>
+                    </p>
                 </div>
             </a>
              <a href="#" class="list-group-item list-group-item-action flex-column align-items-start event-row">
                 <div class="d-flex w-100 justify-content-between">
-                    <p><i class="fa fa-futbol-o" aria-hidden="true"></i> Basket</p>
+                    <p class="w-100 float-left">
+                        <i class="fa fa-futbol-o pr-2" aria-hidden="true"></i>Baloncesto
+                         <i class="fa fa-chevron-right float-right mt-1" aria-hidden="true"></i>
+                    </p>
                 </div>
             </a>
         </div>

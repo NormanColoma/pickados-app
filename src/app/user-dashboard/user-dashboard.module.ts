@@ -10,6 +10,8 @@ import { UserDashboardTimelineComponent } from "app/user-dashboard/containers/us
 import { UserDashboardEventsComponent } from "app/user-dashboard/containers/user-dashboard-events/user-dashboard-events.component";
 import { BreadCrumbPipe } from "app/user-dashboard/breadcrumb.pipe";
 import { UserDashboardEventsResolver } from "app/user-dashboard/user-dashboard-events-resolver.service";
+import { UserDashboardPublishPostComponent } from "app/user-dashboard/containers/user-dashboard-publish-post/user-dashboard-publish-post.component";
+import { UserDashboardEventResolver } from "app/user-dashboard/user-dashboard-event-resolver.service";
 
 
 const routes: Routes = [
@@ -30,6 +32,13 @@ const routes: Routes = [
                 resolve: {
                     events: UserDashboardEventsResolver
                 }
+            },
+            {
+                path: 'events/:matchid/post',
+                component: UserDashboardPublishPostComponent,
+                resolve: {
+                    event: UserDashboardEventResolver
+                }
             }
         ],
         canActivate: [AuthGuard],
@@ -43,6 +52,7 @@ const routes: Routes = [
         UserDashboardPostComponent,
         UserDashboardTimelineComponent,
         UserDashboardEventsComponent,
+        UserDashboardPublishPostComponent,
         BreadCrumbPipe
     ],
     imports: [
@@ -54,7 +64,8 @@ const routes: Routes = [
     providers : [
         UserDashboardService,
         UserDashboardResolver,
-        UserDashboardEventsResolver
+        UserDashboardEventsResolver,
+        UserDashboardEventResolver
     ]
 })
 
