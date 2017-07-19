@@ -5,5 +5,6 @@ export interface UserAccount {
     Nif: string,
     Created_at: Date,
     Premium: boolean,
-    Subscription_fee: number
+    Subscription_fee: number,
+    Sport: string
 }

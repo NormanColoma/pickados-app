@@ -30,7 +30,7 @@ export class UserStatsComponent  implements OnInit{
         this.user = params['user']; 
         this.getTipsterByAlias(this.user);
         this.getStatsByTipsterAndMonth(6, this.user);
-    
+        console.log(JSON.parse(localStorage.getItem('loggedInUser')));
     });
 }
 

@@ -1,6 +1,5 @@
 import { Component, EventEmitter, Input, Output, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-// import { Post} from 'app/posts-dashboard/services/post';
 
 @Component({
   selector: 'user-profile',
@@ -10,18 +9,25 @@ import { ActivatedRoute } from '@angular/router';
 export class UserProfileComponent implements OnInit {
 
     isEdit: boolean;
+    editPass: boolean;
     sportPrefered: string;
-    currentUser: string;
-
-    private sub: any;
+    sportPreferedLabel: string;
+    currentUser: any;
 
     constructor (private route: ActivatedRoute) {}
 
   ngOnInit(): void {
-      this.isEdit = false;
-      this.sub = this.route.params.subscribe(params => {
-      this.currentUser = params['user'];
 
-    })
+      this.isEdit = false;
+      this.editPass = false;
+      this.currentUser = JSON.parse(localStorage.getItem('loggedInUser'));
+      this.sportPrefered = this.currentUser.Sport;
+      if(this.currentUser.Sport == 'Football') this.sportPreferedLabel = 'Fútbol';
+      else if (this.currentUser.Sport == 'Basket') this.sportPreferedLabel = 'Baloncesto';
+  
+  }
+
+  updateUser(userForm): void {
+    this.isEdit = false;
   }
 }
