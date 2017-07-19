@@ -8,6 +8,7 @@ import 'rxjs/add/operator/map';
 import { Post } from "app/user-dashboard/models/post.interface";
 import { Event } from "app/user-dashboard/models/event.interface";
 import { LEAGUES } from "app/user-dashboard/leagues";
+import { ODDS } from "app/user-dashboard/odds";
 
 const API_URL : string = 'http://13.94.138.100/api/Tipster'
 
@@ -15,6 +16,8 @@ const API_URL : string = 'http://13.94.138.100/api/Tipster'
 export class UserDashboardService {
 
      constructor(private http: Http){}
+
+     private currentEvents : Event [];
 
      loadTimeline(tipsterId : number) : Observable<Post[]>{
          let headers = new Headers({ 'Content-Type': 'application/json' });
@@ -37,7 +40,7 @@ export class UserDashboardService {
             .map((response : Response) => {
                 const events = JSON.parse(response.json());
                 const unstartedEvents = events
-                    .filter(ev => (ev.match_status === "" || ev.match_status === "Postp.") /*&& ev.match_time >= time*/)
+                    .filter(ev => (ev.match_status === "" || ev.match_status === "Postp.") && ev.match_time >= time)
                     .sort((a, b) => {
                        if (a.match_time > b.match_time) {
                             return 1;
@@ -62,6 +65,10 @@ export class UserDashboardService {
                 const events = JSON.parse(response.json());
                 const event = events
                     .find(ev => ev.match_id === match_id);
+                
+                const index = Math.floor(Math.random() * (ODDS.length -1)) + 1
+                const odds = ODDS[index];
+                event.odds = odds;
                 return event;
             })  
      }

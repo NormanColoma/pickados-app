@@ -7,4 +7,5 @@ export interface Event {
     Competition: string,
     Sport: string
     match_id: string;
+    odds: any;
 }

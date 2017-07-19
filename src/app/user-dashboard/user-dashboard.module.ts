@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 import { AuthGuard } from "app/user-account/auth-guard.service";
 import { UserDashboardComponent } from "app/user-dashboard/containers/user-dashboard.component";
 import { RouterModule, Routes } from '@angular/router';
@@ -57,6 +58,7 @@ const routes: Routes = [
     ],
     imports: [
         CommonModule,
+        FormsModule,
         RouterModule.forChild(routes)
     ],
     exports: [

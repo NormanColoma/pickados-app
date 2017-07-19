@@ -38,7 +38,6 @@ export class UserDashboardEventsComponent implements OnInit {
         this.route.data
         .subscribe((data : { events: Event []}) => {
             this.events = data.events;
-            debugger;
       });
     }
 
