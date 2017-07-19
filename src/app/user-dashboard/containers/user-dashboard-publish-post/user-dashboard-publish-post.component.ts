@@ -124,10 +124,10 @@ export class UserDashboardPublishPostComponent implements OnInit{
     private post: PostPublication = {
         Created_at: new Date().toString(),
         Description: "",
-        PostResult: 0, 
+        PostResult: 1, 
         Stake: 0,
         TotalOdd: 0.00,
-        Tipster: ""
+        Tipster: JSON.parse(localStorage.getItem('loggedInUser')).Id
     };
     constructor(private router: Router,  private route: ActivatedRoute, 
         private userDashboardService: UserDashboardService){}

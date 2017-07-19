@@ -14,7 +14,9 @@ export class UserDashboardResolver implements Resolve<Post[]> {
   constructor(private userDashboardService: UserDashboardService, private router: Router) {}
 
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<Post[]> {
-    return this.userDashboardService.loadTimeline(32769)
+    const userId = JSON.parse(localStorage.getItem('loggedInUser')).Id;
+    debugger;
+    return this.userDashboardService.loadTimeline(userId)
         .map((data) => {
             return data;
         });
