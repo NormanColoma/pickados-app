@@ -14,6 +14,7 @@ import { UserStatsModule} from "app/user-stats/user-stats.module";
 import { UserAccountModule } from "app/user-account/user-account.module";
 import { UserProfileModule } from "app/user-profile/user-profile.module";
 import { UserAccountService } from "app/user-account/user-account.service";
+import { UserDashboardModule } from "app/user-dashboard/user-dashboard.module";
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { UserAccountService } from "app/user-account/user-account.service";
     PostsDashboardModule,
     UserStatsModule,
     TipsterModule,
+    UserDashboardModule,
     UserAccountModule,
     AppRoutingModule,
     UserProfileModule
