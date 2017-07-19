@@ -6,6 +6,7 @@ import { PostsDashboardComponent } from "app/posts-dashboard/containers/posts-da
 import { UserStatsComponent } from "app/user-stats/containers/user-stats.component";
 import { TipsterComponent } from "app/tipsters/containers/tipster.component";
 import { UserAccountModule } from "app/user-account/user-account.module";
+import { UserProfileComponent } from "app/user-profile/containers/user-profile.component"; 
 
 const appRoutes : Routes = [
   {
@@ -23,6 +24,10 @@ const appRoutes : Routes = [
   {
     path: 'stats/:user',
     component: UserStatsComponent
+  },
+  {
+    path: 'profile/:user',
+    component: UserProfileComponent
   },
   {
     path: '**',

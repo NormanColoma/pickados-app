@@ -5,7 +5,15 @@ import { Nav } from "app/header/nav.interface";
     selector: 'nav-header',
     template: `
     <ul class="navbar-nav">
-        <li class="nav-item" *ngIf="profile==true"><a class="nav-link">Hola, {{alias}}</a></li>
+        
+        <li class="dropdown nav-item" *ngIf="profile==true">
+            <a class="dropdown-toggle nav-link" data-toggle="dropdown" href="#">Hola, {{alias}}
+            <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+            <li><a class="nav-link" [routerLink]="['/profile', alias]" >Configuración</a></li>
+            <li><a class="nav-link" [routerLink]="['/stats', alias]">Mis Stats</a></li>
+            </ul>
+         </li>
         <li class="nav-item" *ngFor="let item of items">
             <a 
                 [routerLink]="item.link" 
@@ -23,7 +31,7 @@ import { Nav } from "app/header/nav.interface";
 export class NavHeaderComponent {
     @Input()
      items: Nav[];
-
+//<li class="nav-item" *ngIf="profile==true"><a class="nav-link">Hola, {{alias}}</a></li>
      @Input()
      profile: boolean;
 
